@@ -11,7 +11,7 @@ import LatestPosts from "@/components/LatestPosts";
 
 function AdBanner({ size = "728x90" }: { size?: string }) {
   return (
-    <div className="bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-sm font-medium w-full py-6 rounded-sm">
+    <div className="bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-sm font-medium w-full py-8">
       {size} — Advertisement
     </div>
   );
@@ -25,36 +25,29 @@ export default function Home() {
       <Hero />
 
       <main className="content-container px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
 
           {/* Main Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 min-w-0">
             <FeaturedStories />
-
             <AdBanner size="728x90" />
-
             <CategorySection title="Business" />
-
             <AdBanner size="728x90" />
-
             <CategorySection title="Tech" />
-
             <EntertainmentSection />
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <CategorySection title="Lifestyle" />
               <CategorySection title="Music" />
             </div>
-
             <AdBanner size="970x90" />
-
             <LatestPosts />
           </div>
 
-          {/* Sidebar */}
-          <aside>
+          {/* Sticky Sidebar */}
+          <aside className="lg:sticky lg:top-4 space-y-6">
             <Sidebar />
           </aside>
+
         </div>
       </main>
 
