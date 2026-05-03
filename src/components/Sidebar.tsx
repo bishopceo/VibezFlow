@@ -3,80 +3,59 @@
 import { useState } from "react";
 import { trendingPosts, articles } from "@/data/articles";
 
-const socialStats = [
-  { label: "Facebook", followers: "12.4k", color: "bg-blue-600" },
-  { label: "Twitter/X", followers: "8.1k", color: "bg-black" },
-  { label: "Instagram", followers: "31.5k", color: "bg-pink-600" },
-  { label: "YouTube", followers: "140.6k", color: "bg-red-600" },
-];
-
 export default function Sidebar() {
-  const [activeTab, setActiveTab] = useState<"trending" | "latest">("trending");
+  const [activeTab, setActiveTab] = useState<"trending" | "comments" | "latest">("trending");
 
-  const displayedPosts =
-    activeTab === "latest"
-      ? articles.slice(0, 5)
-      : trendingPosts;
+  const tabArticles = {
+    trending: trendingPosts.slice(0, 3),
+    comments: articles.filter(a => a.commentCount).sort((a, b) => (b.commentCount || 0) - (a.commentCount || 0)).slice(0, 3),
+    latest: articles.slice(0, 3),
+  };
+
+  const displayedArticles = tabArticles[activeTab];
 
   return (
-    <div className="space-y-6">
-      {/* Trending / Latest Tabs */}
-      <div className="bg-white rounded-sm p-5 card-shadow">
-        <ul className="flex border-b border-gray-200 mb-4">
-          {(["trending", "latest"] as const).map((tab) => (
-            <li key={tab} className="flex-1">
-              <button
-                onClick={() => setActiveTab(tab)}
-                className={`w-full pb-3 text-sm font-bold text-center capitalize transition-colors ${
-                  activeTab === tab
-                    ? "text-red-600 border-b-2 border-red-600"
-                    : "text-gray-500 hover:text-red-600"
-                }`}
-              >
-                {tab}
-              </button>
-            </li>
-          ))}
-        </ul>
+    <div className="space-y-5">
 
-        <div className="space-y-4">
-          {displayedPosts.slice(0, 5).map((post) => (
-            <div key={post.id} className="flex gap-3 group cursor-pointer">
-              <div className="relative w-20 h-14 flex-shrink-0 overflow-hidden rounded-sm">
+      {/* ── TRENDING / COMMENTS / LATEST ── */}
+      <div className="bg-white">
+        {/* Tabs */}
+        <div className="flex border-b border-gray-200">
+          {(["trending", "comments", "latest"] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 py-2.5 text-xs font-bold capitalize transition-colors ${
+                activeTab === tab
+                  ? "text-red-600 border-b-2 border-red-600 -mb-px"
+                  : "text-gray-500 hover:text-red-600"
+              }`}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab articles */}
+        <div className="py-3 space-y-3">
+          {displayedArticles.map((article) => (
+            <div key={article.id} className="flex gap-3 group cursor-pointer px-3">
+              <div className="relative w-[72px] h-[52px] flex-shrink-0 overflow-hidden">
                 <img
-                  src={post.image}
-                  alt={post.title}
+                  src={article.image}
+                  alt={article.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="text-xs font-semibold text-gray-800 leading-tight group-hover:text-red-600 transition-colors line-clamp-2">
-                  {post.title}
+                <h4 className="text-xs font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug line-clamp-2 mb-1">
+                  {article.title}
                 </h4>
-                <span className="text-xs text-gray-400 mt-1 block">{post.date}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Popular Stories */}
-      <div className="bg-white rounded-sm p-5 card-shadow">
-        <h3 className="text-sm font-bold text-gray-800 pb-2 border-b-2 border-red-600 mb-4 uppercase tracking-wide">
-          Popular Stories
-        </h3>
-        <div className="space-y-4">
-          {trendingPosts.slice(0, 5).map((post, idx) => (
-            <div key={post.id} className="flex gap-3 group cursor-pointer border-b border-gray-100 pb-4 last:border-0 last:pb-0">
-              <span className="text-3xl font-black text-gray-100 leading-none w-8 flex-shrink-0">{idx + 1}</span>
-              <div className="flex-1">
-                <h4 className="text-xs font-semibold text-gray-800 hover:text-red-600 transition-colors leading-snug line-clamp-2">
-                  {post.title}
-                </h4>
-                <div className="mt-1.5 flex items-center text-xs text-gray-400 gap-2">
-                  <span>{post.shareCount?.toLocaleString()} shares</span>
-                  <span>·</span>
-                  <a href="#" className="hover:text-red-600 transition-colors">Share</a>
+                <div className="flex items-center gap-1 text-[10px] text-gray-400">
+                  <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  {article.date}
                 </div>
               </div>
             </div>
@@ -84,38 +63,115 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Stay Connected */}
-      <div className="bg-gray-900 text-white rounded-sm p-5">
-        <h3 className="text-sm font-bold pb-3 mb-4 border-b border-gray-700 uppercase tracking-wide">
+      {/* ── POPULAR STORIES ── */}
+      <div className="bg-white">
+        <h3 className="text-sm font-bold text-gray-800 px-0 pb-2 mb-3 border-b-2 border-red-600 uppercase tracking-wide">
+          Popular Stories
+        </h3>
+
+        {/* Top article with large image */}
+        {trendingPosts[0] && (
+          <div className="group cursor-pointer mb-3">
+            <div className="relative h-[160px] overflow-hidden mb-2">
+              <img
+                src={trendingPosts[0].image}
+                alt={trendingPosts[0].title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <h4 className="text-sm font-bold text-red-600 hover:text-red-700 transition-colors leading-snug line-clamp-2 mb-1">
+              {trendingPosts[0].title}
+            </h4>
+            <div className="flex items-center gap-3 text-[10px] text-gray-500">
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                {trendingPosts[0].shareCount?.toLocaleString()} shares
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Numbered list */}
+        <div className="space-y-3">
+          {trendingPosts.slice(1, 6).map((post, idx) => (
+            <div key={post.id} className="flex gap-3 group cursor-pointer pb-3 border-b border-gray-100 last:border-0 last:pb-0">
+              <span className="text-2xl font-black text-gray-100 leading-none w-6 flex-shrink-0 text-center">
+                {String(idx + 2).padStart(2, "0")}
+              </span>
+              <div className="flex-1 min-w-0">
+                <h4 className="text-xs font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug line-clamp-2 mb-1">
+                  {post.title}
+                </h4>
+                <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                  <span>{post.shareCount?.toLocaleString()} shares</span>
+                  <span>·</span>
+                  <a href="#" className="hover:text-red-600 transition-colors flex items-center gap-0.5">
+                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                    Share
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── 300x600 AD ── */}
+      <div className="bg-gray-50 border border-gray-200 flex flex-col items-center justify-center py-8 text-gray-400 text-xs font-medium text-center gap-1">
+        <span className="text-gray-300 text-xs uppercase tracking-widest">Smart &amp; Responsive</span>
+        <span className="font-bold text-gray-400">ADVERTISEMENT</span>
+        <span className="text-gray-300 mt-1">300×600</span>
+        <button className="mt-3 border border-gray-400 text-gray-500 text-xs px-4 py-1.5 font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors">
+          LEARN MORE
+        </button>
+      </div>
+
+      {/* ── STAY CONNECTED ── */}
+      <div className="bg-gray-900 text-white p-4">
+        <h3 className="text-xs font-bold uppercase tracking-widest mb-4 pb-2 border-b border-gray-700">
           Stay Connected
         </h3>
-        <div className="grid grid-cols-2 gap-2">
-          {socialStats.map(({ label, followers, color }) => (
-            <a
-              key={label}
-              href="#"
-              className={`${color} rounded-sm p-3 flex flex-col items-center hover:opacity-90 transition-opacity`}
-            >
-              <span className="text-lg font-black">{followers}</span>
-              <span className="text-xs text-white/70">{label}</span>
+        <div className="grid grid-cols-3 gap-2 mb-2">
+          {[
+            { label: "Facebook", count: "12.4k", color: "bg-blue-600" },
+            { label: "Twitter/X", count: "8.1k", color: "bg-black border border-gray-700" },
+            { label: "Instagram", count: "31.5k", color: "bg-pink-600" },
+            { label: "YouTube", count: "140.6k", color: "bg-red-600" },
+            { label: "Behance", count: "137", color: "bg-blue-500" },
+            { label: "Flickr", count: "640", color: "bg-pink-500" },
+          ].map(({ label, count, color }) => (
+            <a key={label} href="#" className={`${color} rounded-sm p-2 flex flex-col items-center hover:opacity-90 transition-opacity`}>
+              <span className="text-sm font-black leading-tight">{count}</span>
+              <span className="text-[9px] text-white/70 text-center leading-tight">{label}</span>
             </a>
           ))}
         </div>
       </div>
 
-      {/* Newsletter Widget */}
-      <div className="bg-red-600 text-white rounded-sm p-5">
-        <h3 className="text-sm font-bold mb-2">Get Daily Updates</h3>
-        <p className="text-xs text-red-200 mb-4">Subscribe and never miss a beat.</p>
+      {/* ── GET DAILY UPDATES (Newsletter widget) ── */}
+      <div className="bg-red-600 text-white p-4">
+        <h3 className="text-sm font-bold mb-1">Get Daily Updates</h3>
+        <p className="text-xs text-red-200 mb-3 leading-snug">Subscribe and never miss a beat.</p>
         <input
           type="email"
           placeholder="Your email address"
-          className="w-full px-3 py-2.5 text-sm text-gray-800 bg-white rounded-sm focus:outline-none mb-2"
+          className="w-full px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none mb-2"
         />
-        <button className="w-full bg-black hover:bg-gray-900 text-white py-2.5 text-sm font-bold rounded-sm transition-colors">
+        <button className="w-full bg-black hover:bg-gray-900 text-white py-2 text-xs font-bold uppercase tracking-wide transition-colors">
           Subscribe
         </button>
       </div>
+
+      {/* ── 300x250 AD ── */}
+      <div className="bg-gray-50 border border-gray-200 flex flex-col items-center justify-center py-8 text-gray-400 text-xs font-medium text-center gap-1">
+        <span className="text-gray-300 text-xs uppercase tracking-widest">Smart &amp; Responsive</span>
+        <span className="font-bold text-gray-400">ADVERTISEMENT</span>
+        <span className="text-gray-300 mt-1">300×250</span>
+        <button className="mt-3 border border-gray-400 text-gray-500 text-xs px-4 py-1.5 font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors">
+          LEARN MORE
+        </button>
+      </div>
+
     </div>
   );
 }

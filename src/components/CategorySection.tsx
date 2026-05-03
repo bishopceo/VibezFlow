@@ -4,64 +4,62 @@ import { useState } from "react";
 import { articles } from "@/data/articles";
 import ArticleCard from "./ArticleCard";
 
-const sectionConfig: Record<string, { categories: string[]; filter: string[] }> = {
+type SectionConfig = {
+  tabs: string[];
+  filter: string[];
+};
+
+const configs: Record<string, SectionConfig> = {
   Business: {
-    categories: ["All", "Business", "Startup", "Finance", "World"],
+    tabs: ["All", "Business", "Startup", "Finance", "World"],
     filter: ["Business", "Startup", "Finance", "World", "Politics"],
   },
   Tech: {
-    categories: ["All", "Apps", "Gadgets", "Streaming", "Startup"],
+    tabs: ["All", "Apps", "Gadgets", "Streaming", "Startup"],
     filter: ["Tech", "Gaming", "Apps", "Mobile", "Streaming"],
   },
   Lifestyle: {
-    categories: ["All", "Fashion", "Food", "Health", "Travel"],
+    tabs: ["All", "Fashion", "Food", "Health", "Travel"],
     filter: ["Lifestyle", "Fashion", "Food", "Health", "Travel"],
   },
   Music: {
-    categories: ["All", "Afrobeats", "Amapiano", "Hiphop", "Pop"],
+    tabs: ["All", "Afrobeats", "Amapiano", "Hiphop", "Pop"],
     filter: ["Music"],
   },
 };
 
 export default function CategorySection({ title }: { title: string }) {
-  const config = sectionConfig[title] || {
-    categories: ["All", "News", "Tech", "Entertainment", "Music"],
-    filter: [],
-  };
-
   const [activeTab, setActiveTab] = useState("All");
+  const config = configs[title] || { tabs: ["All"], filter: [] };
 
-  const getFilteredArticles = () => {
-    const filtered = articles.filter((a) =>
-      config.filter.length === 0 || config.filter.includes(a.category)
-    );
-    return filtered.slice(0, 3);
-  };
+  const filtered = articles
+    .filter(a => config.filter.length === 0 || config.filter.includes(a.category))
+    .slice(0, 3);
 
   return (
-    <section className="bg-white rounded-sm p-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-3 border-b-2 border-red-600">
-        <h2 className="text-lg font-bold text-gray-800">{title}</h2>
-        <ul className="hidden sm:flex flex-wrap gap-1">
-          {config.categories.map((cat) => (
-            <li key={cat}>
+    <section className="bg-white p-5">
+      <div className="flex items-center justify-between pb-2 mb-4 border-b-2 border-red-600">
+        <h2 className="text-sm font-bold text-gray-800 uppercase tracking-wide">{title}</h2>
+        <ul className="hidden sm:flex items-center">
+          {config.tabs.map((tab) => (
+            <li key={tab}>
               <button
-                onClick={() => setActiveTab(cat)}
-                className={`px-3 py-1.5 text-xs font-semibold transition-colors rounded-sm ${
-                  activeTab === cat
+                onClick={() => setActiveTab(tab)}
+                className={`px-3 py-1 text-[11px] font-semibold transition-colors ${
+                  activeTab === tab
                     ? "text-white bg-red-600"
-                    : "text-gray-600 hover:text-red-600 hover:bg-gray-100"
+                    : "text-gray-500 hover:text-red-600 hover:bg-gray-50"
                 }`}
               >
-                {cat}
+                {tab}
               </button>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {getFilteredArticles().map((article) => (
+      <div className="grid grid-cols-3 gap-4">
+        {filtered.map((article) => (
           <ArticleCard key={article.id} article={article} size="medium" />
         ))}
       </div>
