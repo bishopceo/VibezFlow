@@ -11,7 +11,7 @@ import LatestPosts from "@/components/LatestPosts";
 
 function AdBanner({ size = "728x90" }: { size?: string }) {
   return (
-    <div className="bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-sm font-medium w-full py-8">
+    <div className="bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-sm font-medium w-full py-5">
       {size} — Advertisement
     </div>
   );
@@ -22,20 +22,31 @@ export default function Home() {
     <div className="min-h-screen bg-[#f5f5f5]">
       <Header />
       <NewsTicker />
-      <Hero />
 
-      <main className="content-container px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
+      {/* Hero + Sidebar share the same grid row — matching JNews exactly */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="content-container px-4 py-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4 items-start">
+            <Hero />
+            <div className="hidden lg:block">
+              <Sidebar />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main className="content-container px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
 
           {/* Main Content */}
-          <div className="space-y-8 min-w-0">
+          <div className="space-y-6 min-w-0">
             <FeaturedStories />
             <AdBanner size="728x90" />
             <CategorySection title="Business" />
             <AdBanner size="728x90" />
             <CategorySection title="Tech" />
             <EntertainmentSection />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <CategorySection title="Lifestyle" />
               <CategorySection title="Music" />
             </div>
@@ -43,9 +54,11 @@ export default function Home() {
             <LatestPosts />
           </div>
 
-          {/* Sticky Sidebar */}
-          <aside className="lg:sticky lg:top-4 space-y-6">
-            <Sidebar />
+          {/* Sticky Sidebar continues below hero */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-4 space-y-5 max-h-[calc(100vh-2rem)] overflow-y-auto pb-4">
+              <Sidebar />
+            </div>
           </aside>
 
         </div>

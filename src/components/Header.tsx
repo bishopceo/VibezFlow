@@ -74,8 +74,8 @@ export default function Header() {
           </div>
         </div>
 
-        {/* NAV ROW */}
-        <nav className="border-t border-gray-200 border-b border-b-gray-200">
+        {/* NAV ROW — HOME uses red text + red underline like JNews, not red background */}
+        <nav className="border-t border-b border-gray-200">
           <div className="content-container px-4">
             <div className="flex items-center justify-between">
               <ul className="hidden md:flex items-center">
@@ -83,13 +83,15 @@ export default function Header() {
                   <li key={label} className="relative group">
                     <a
                       href={href}
-                      className={`flex items-center gap-0.5 px-4 py-3 text-sm font-semibold transition-colors whitespace-nowrap ${
-                        active ? "text-white bg-red-600" : "text-gray-700 hover:text-red-600"
+                      className={`flex items-center gap-0.5 px-4 py-3 text-sm font-bold transition-colors whitespace-nowrap border-b-2 ${
+                        active
+                          ? "text-red-600 border-red-600"
+                          : "text-gray-700 border-transparent hover:text-red-600"
                       }`}
                     >
                       {label}
                       {hasDropdown && (
-                        <svg className={`w-3 h-3 ${active ? "text-white" : "text-gray-400 group-hover:text-red-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className={`w-3 h-3 ${active ? "text-red-500" : "text-gray-400 group-hover:text-red-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                         </svg>
                       )}

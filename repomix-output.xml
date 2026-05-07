@@ -1,0 +1,1969 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitattributes
+.gitignore
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+public/file.svg
+public/globe.svg
+public/next.svg
+public/vercel.svg
+public/window.svg
+README.md
+src/app/favicon.ico
+src/app/globals.css
+src/app/layout.tsx
+src/app/page.tsx
+src/components/ArticleCard.tsx
+src/components/CategorySection.tsx
+src/components/EntertainmentSection.tsx
+src/components/FeaturedStories.tsx
+src/components/Footer.tsx
+src/components/Header.tsx
+src/components/Hero.tsx
+src/components/LatestPosts.tsx
+src/components/Newsletter.tsx
+src/components/NewsTicker.tsx
+src/components/Sidebar.tsx
+src/data/articles.ts
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitattributes">
+# Auto detect text files and perform LF normalization
+* text=auto
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="package.json">
+{
+  "name": "jnews",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="src/components/Newsletter.tsx">
+export default function Newsletter() {
+  return (
+    <section className="bg-gray-900 text-white py-16">
+      <div className="content-container px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="text-2xl font-bold mb-2">Subscribe to our mailing list</h3>
+          <p className="text-gray-400 mb-8">Get daily news updates delivered directly to your inbox!</p>
+          <form className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
+            <input 
+              type="email" 
+              placeholder="Enter your email address"
+              className="px-5 py-3.5 bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 flex-1 rounded-sm"
+            />
+            <button 
+              type="submit"
+              className="bg-red-600 hover:bg-red-700 px-8 py-3.5 font-semibold transition-colors rounded-sm whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p className="text-xs text-gray-500 mt-4">* No spam, we hate it more than you do</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  devIndicators: false,
+};
+
+export default nextConfig;
+</file>
+
+<file path="src/components/ArticleCard.tsx">
+import { Article } from "@/data/articles";
+
+interface ArticleCardProps {
+  article: Article;
+  size?: "small" | "medium" | "large";
+}
+
+export default function ArticleCard({ article, size = "medium" }: ArticleCardProps) {
+  const imgHeight = size === "large" ? "h-[200px]" : size === "medium" ? "h-[150px]" : "h-[110px]";
+
+  return (
+    <article className="group cursor-pointer">
+      <div className={`relative overflow-hidden mb-2.5 ${imgHeight}`}>
+        <img
+          src={article.image}
+          alt={article.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute top-2 left-2">
+          <span className="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 uppercase tracking-wide">
+            {article.category}
+          </span>
+        </div>
+      </div>
+      <h3 className="text-xs font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug line-clamp-2 mb-1.5">
+        {article.title}
+      </h3>
+      <div className="flex items-center text-[10px] text-gray-400 gap-1.5 flex-wrap">
+        <span>by <a href="#" className="text-gray-500 hover:text-red-600 font-medium transition-colors">{article.author}</a></span>
+        <span className="text-gray-300">|</span>
+        <span>{article.date}</span>
+      </div>
+    </article>
+  );
+}
+</file>
+
+<file path="src/components/EntertainmentSection.tsx">
+import { articles } from "@/data/articles";
+
+export default function EntertainmentSection() {
+  const entertainmentArticles = articles
+    .filter((a) => ["Entertainment", "Music", "Movies", "Movie"].includes(a.category))
+    .slice(0, 4);
+
+  const [mainArticle, ...restArticles] = entertainmentArticles;
+
+  if (!mainArticle) return null;
+
+  return (
+    <section className="bg-gray-900 rounded-sm overflow-hidden">
+      <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-700">
+        <h2 className="text-lg font-bold text-white">Entertainment</h2>
+        <a href="#" className="text-xs text-red-400 hover:text-red-300 font-semibold uppercase tracking-wide transition-colors">
+          View All →
+        </a>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+        {/* Main large article */}
+        <div className="lg:col-span-2 relative h-[280px] sm:h-[340px] group cursor-pointer overflow-hidden">
+          <img
+            src={mainArticle.image}
+            alt={mainArticle.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+          <div className="absolute top-4 left-4">
+            <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 uppercase tracking-wide">
+              {mainArticle.category}
+            </span>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <h3 className="text-white text-xl font-bold leading-tight group-hover:text-red-400 transition-colors line-clamp-2">
+              {mainArticle.title}
+            </h3>
+            <div className="flex items-center text-xs text-gray-400 mt-2 space-x-3">
+              <span>by <span className="text-gray-300 font-medium">{mainArticle.author}</span></span>
+              <span className="text-gray-600">|</span>
+              <span>{mainArticle.date}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Side articles */}
+        <div className="flex flex-col">
+          {restArticles.map((article) => (
+            <div
+              key={article.id}
+              className="relative flex-1 h-[110px] group cursor-pointer overflow-hidden border-b border-gray-800 last:border-0"
+            >
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+              <div className="absolute top-2 left-2">
+                <span className="bg-red-600 text-white text-xs font-bold px-2 py-0.5 uppercase">
+                  {article.category}
+                </span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <h4 className="text-white text-xs font-semibold leading-snug group-hover:text-red-400 transition-colors line-clamp-2">
+                  {article.title}
+                </h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Footer.tsx">
+export default function Footer() {
+  const footerCategories = [
+    "Music", "Entertainment", "Tech", "Business", "Lifestyle",
+    "News", "Sports", "Health", "Fashion", "Food",
+    "Travel", "Gaming", "Movies", "Politics", "World",
+    "Startup", "Science", "Video", "Podcasts", "Reviews",
+  ];
+
+  const quickLinks = [
+    { name: "About Us", href: "#" },
+    { name: "Advertise", href: "#" },
+    { name: "Contact Us", href: "#" },
+    { name: "Careers", href: "#" },
+    { name: "Privacy Policy", href: "#" },
+    { name: "Terms of Service", href: "#" },
+  ];
+
+  const socialLinks = [
+    {
+      label: "Facebook",
+      path: "M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5L14.17.5C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z",
+    },
+    {
+      label: "Twitter/X",
+      path: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z",
+    },
+    {
+      label: "Instagram",
+      path: "M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s0,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58,0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.35.2-6.78,2.62-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.36,2.62,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.35-.2,6.78-2.62,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.35-2.62-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z",
+    },
+    {
+      label: "YouTube",
+      path: "M23.5,6.19a3.02,3.02,0,0,0-2.12-2.14C19.54,3.5,12,3.5,12,3.5s-7.54,0-9.38.55A3.02,3.02,0,0,0,.5,6.19,31.56,31.56,0,0,0,0,12a31.56,31.56,0,0,0,.5,5.81,3.02,3.02,0,0,0,2.12,2.14c1.84.55,9.38.55,9.38.55s7.54,0,9.38-.55a3.02,3.02,0,0,0,2.12-2.14A31.56,31.56,0,0,0,24,12,31.56,31.56,0,0,0,23.5,6.19ZM9.55,15.57V8.43L15.82,12Z",
+    },
+  ];
+
+  return (
+    <footer className="bg-white border-t border-gray-200">
+      <div className="content-container px-4 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand Column */}
+          <div>
+            <div className="flex items-center mb-5">
+              <span className="text-2xl font-black text-red-600">Vibez</span>
+              <span className="text-2xl font-black text-gray-900">Flow</span>
+            </div>
+            <p className="text-gray-500 text-sm leading-relaxed mb-5">
+              Your #1 destination for African music, entertainment, tech, and lifestyle news. Stay connected to the culture.
+            </p>
+            <div className="flex space-x-2">
+              {socialLinks.map(({ label, path }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-9 h-9 bg-gray-100 hover:bg-red-600 text-gray-600 hover:text-white flex items-center justify-center rounded-sm transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d={path} />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Categories */}
+          <div>
+            <h4 className="font-bold text-gray-800 mb-5 pb-2 border-b-2 border-red-600 text-sm uppercase tracking-wide">Categories</h4>
+            <ul className="grid grid-cols-2 gap-y-2 gap-x-4">
+              {footerCategories.map((cat) => (
+                <li key={cat}>
+                  <a href="#" className="text-sm text-gray-500 hover:text-red-600 transition-colors">
+                    {cat}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="font-bold text-gray-800 mb-5 pb-2 border-b-2 border-red-600 text-sm uppercase tracking-wide">Newsletter</h4>
+            <p className="text-gray-500 text-sm mb-4 leading-relaxed">
+              Subscribe to get daily music and entertainment updates delivered to your inbox!
+            </p>
+            <div className="space-y-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2.5 border border-gray-300 text-sm focus:outline-none focus:border-red-500 rounded-sm"
+              />
+              <button className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5 text-sm font-semibold transition-colors rounded-sm">
+                Subscribe
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold text-gray-800 mb-5 pb-2 border-b-2 border-red-600 text-sm uppercase tracking-wide">Quick Links</h4>
+            <ul className="space-y-2.5">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-sm text-gray-500 hover:text-red-600 transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-50 border-t border-gray-200 py-5">
+        <div className="content-container px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500 gap-2">
+            <p>© 2026 VibezFlow — Music, Entertainment & News</p>
+            <div className="flex gap-4">
+              <a href="#" className="hover:text-red-600 transition-colors">About</a>
+              <a href="#" className="hover:text-red-600 transition-colors">Advertise</a>
+              <a href="#" className="hover:text-red-600 transition-colors">Privacy & Policy</a>
+              <a href="#" className="hover:text-red-600 transition-colors">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+</file>
+
+<file path="src/components/NewsTicker.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import { breakingNews } from "@/data/articles";
+
+function timeAgo(index: number): string {
+  const times = ["2 hours ago", "5 hours ago", "1 day ago", "2 days ago", "3 days ago"];
+  return times[index % times.length];
+}
+
+export default function NewsTicker() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % breakingNews.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goPrev = () =>
+    setCurrentIndex((prev) => (prev - 1 + breakingNews.length) % breakingNews.length);
+
+  const goNext = () =>
+    setCurrentIndex((prev) => (prev + 1) % breakingNews.length);
+
+  const current = breakingNews[currentIndex];
+
+  return (
+    <div className="bg-white border-b border-gray-200">
+      <div className="content-container px-4">
+        <div className="flex items-center h-10">
+
+          {/* NEWSFLASH badge */}
+          <div className="flex-shrink-0 flex items-center gap-1.5 bg-red-600 text-white px-3 h-full">
+            <svg className="w-3 h-3 fill-white" viewBox="0 0 24 24">
+              <path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/>
+            </svg>
+            <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap">Newsflash</span>
+          </div>
+
+          {/* Single scrolling headline */}
+          <div className="flex-1 overflow-hidden px-4 flex items-center">
+            <a
+              href="#"
+              key={currentIndex}
+              className="text-sm text-gray-700 hover:text-red-600 transition-colors truncate font-medium"
+            >
+              {current.title}
+            </a>
+            <span className="text-xs text-gray-400 ml-3 flex-shrink-0 whitespace-nowrap">
+              {timeAgo(currentIndex)}
+            </span>
+          </div>
+
+          {/* Prev / Next arrows */}
+          <div className="flex items-center gap-0 flex-shrink-0">
+            <button
+              onClick={goPrev}
+              className="w-8 h-10 flex items-center justify-center text-gray-500 hover:text-red-600 hover:bg-gray-100 transition-colors border-l border-gray-200"
+              aria-label="Previous"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={goNext}
+              className="w-8 h-10 flex items-center justify-center text-gray-500 hover:text-red-600 hover:bg-gray-100 transition-colors border-l border-gray-200"
+              aria-label="Next"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/data/articles.ts">
+export interface Article {
+  id: number;
+  title: string;
+  category: string;
+  subcategory?: string;
+  image: string;
+  author: string;
+  date: string;
+  excerpt?: string;
+  shareCount?: number;
+  commentCount?: number;
+}
+
+export const articles: Article[] = [
+  {
+    id: 1,
+    title: "Afrobeats Takes Over Global Charts: How African Music Conquered the World",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=750&h=375&fit=crop",
+    author: "Amara Osei",
+    date: "May 1, 2026",
+    excerpt: "From Lagos to London, Afrobeats artists are dominating streaming platforms and redefining the sound of global pop music.",
+    shareCount: 4210,
+    commentCount: 38,
+  },
+  {
+    id: 2,
+    title: "Burna Boy Announces Massive World Tour Kicking Off in Lagos",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=750&h=375&fit=crop",
+    author: "Kofi Mensah",
+    date: "April 28, 2026",
+    excerpt: "The Grammy-winning artist reveals a 40-city world tour starting in Lagos, promising a never-before-seen production.",
+    shareCount: 3850,
+    commentCount: 52,
+  },
+  {
+    id: 3,
+    title: "New Streaming Platform Challenges Spotify With Exclusive African Content",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=750&h=375&fit=crop",
+    author: "Temi Adeyemi",
+    date: "April 27, 2026",
+    excerpt: "A Lagos-based startup is disrupting the music streaming market with a platform dedicated to African artists and listeners.",
+    shareCount: 2980,
+    commentCount: 24,
+  },
+  {
+    id: 4,
+    title: "Top 10 Afrobeats Tracks You Need to Hear This Month",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=750&h=375&fit=crop",
+    author: "Zainab Yusuf",
+    date: "May 1, 2026",
+    excerpt: "Our editors curate the hottest new tracks dropping this month across Afrobeats, Afropop, and Amapiano.",
+    shareCount: 2750,
+    commentCount: 19,
+  },
+  {
+    id: 5,
+    title: "Hollywood's Biggest Summer Blockbusters — What to Watch in 2026",
+    category: "Entertainment",
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=750&h=375&fit=crop",
+    author: "Marcus Williams",
+    date: "April 30, 2026",
+    excerpt: "From superhero epics to indie gems, here's your complete guide to the must-see films of the summer season.",
+    shareCount: 2100,
+    commentCount: 31,
+  },
+  {
+    id: 6,
+    title: "AI-Powered Music Production: How Artists Are Using Technology to Create Hits",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=750&h=375&fit=crop",
+    author: "David Okafor",
+    date: "April 26, 2026",
+    excerpt: "Producers across Africa are embracing AI tools to streamline workflows and discover new sounds.",
+    shareCount: 1950,
+    commentCount: 27,
+  },
+  {
+    id: 7,
+    title: "Wizkid's New Album Breaks African Streaming Records in 24 Hours",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=750&h=375&fit=crop",
+    author: "Amara Osei",
+    date: "April 25, 2026",
+    excerpt: "The superstar's latest project set a new benchmark for African music, racking up 50 million streams in its first day.",
+    shareCount: 5120,
+    commentCount: 76,
+  },
+  {
+    id: 8,
+    title: "Nigeria's Nollywood Hits Record $1 Billion in Annual Revenue",
+    category: "Entertainment",
+    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=750&h=375&fit=crop",
+    author: "Chioma Eze",
+    date: "April 24, 2026",
+    excerpt: "Nollywood's booming growth cements its place as the world's second-largest film industry by volume.",
+    shareCount: 3300,
+    commentCount: 41,
+  },
+  {
+    id: 9,
+    title: "The Rise of Amapiano: South Africa's Genre That Took Over the World",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=750&h=375&fit=crop",
+    author: "Lesego Dlamini",
+    date: "April 23, 2026",
+    excerpt: "From Soweto streets to international festival stages, Amapiano's rise is one of music's greatest modern stories.",
+    shareCount: 3900,
+    commentCount: 58,
+  },
+  {
+    id: 10,
+    title: "5G Rollout Transforms Music Streaming Experience Across Africa",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=750&h=375&fit=crop",
+    author: "Temi Adeyemi",
+    date: "April 22, 2026",
+    excerpt: "As 5G networks expand across the continent, fans are experiencing music in higher quality than ever before.",
+    shareCount: 1400,
+    commentCount: 12,
+  },
+  {
+    id: 11,
+    title: "Grammy Awards 2026: African Artists Sweep Major Categories",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1501386761578-eaa54b95cc66?w=750&h=375&fit=crop",
+    author: "Kofi Mensah",
+    date: "April 21, 2026",
+    excerpt: "In a historic night, African artists took home six Grammy awards, signaling a major shift in the global music industry.",
+    shareCount: 6800,
+    commentCount: 93,
+  },
+  {
+    id: 12,
+    title: "Best Music Festivals in Africa You Must Attend in 2026",
+    category: "Lifestyle",
+    image: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=750&h=375&fit=crop",
+    author: "Zainab Yusuf",
+    date: "April 20, 2026",
+    excerpt: "From Afro Nation to Felabration, our guide to the continent's most unmissable live music experiences this year.",
+    shareCount: 2200,
+    commentCount: 17,
+  },
+  {
+    id: 13,
+    title: "Spotify Reports Africa as Fastest-Growing Market for Two Consecutive Years",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=750&h=375&fit=crop",
+    author: "David Okafor",
+    date: "April 19, 2026",
+    excerpt: "The streaming giant's latest report highlights explosive subscriber growth across Nigeria, Ghana, and South Africa.",
+    shareCount: 1870,
+    commentCount: 14,
+  },
+  {
+    id: 14,
+    title: "Meet the Producer Behind Africa's Biggest Hits of 2026",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=750&h=375&fit=crop",
+    author: "Chioma Eze",
+    date: "April 18, 2026",
+    excerpt: "We sit down with the Abuja-based beatmaker whose fingerprints are on almost every chart-topping song this year.",
+    shareCount: 2560,
+    commentCount: 33,
+  },
+  {
+    id: 15,
+    title: "Podcast Industry in Africa Booms With Over 500 New Shows This Year",
+    category: "Entertainment",
+    image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=750&h=375&fit=crop",
+    author: "Marcus Williams",
+    date: "April 17, 2026",
+    excerpt: "Africa's podcasting scene is exploding, with creators covering everything from politics to pop culture.",
+    shareCount: 1100,
+    commentCount: 9,
+  },
+  {
+    id: 16,
+    title: "The Business of Music: How African Labels Are Competing Globally",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=750&h=375&fit=crop",
+    author: "Lesego Dlamini",
+    date: "April 16, 2026",
+    excerpt: "Independent African record labels are signing international distribution deals and challenging major label dominance.",
+    shareCount: 1680,
+    commentCount: 22,
+  },
+  {
+    id: 17,
+    title: "Davido's Foundation Builds 10 Music Schools Across Nigeria",
+    category: "News",
+    image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=750&h=375&fit=crop",
+    author: "Amara Osei",
+    date: "April 15, 2026",
+    excerpt: "The global superstar is investing in the next generation through a massive music education initiative across Nigeria.",
+    shareCount: 4500,
+    commentCount: 67,
+  },
+  {
+    id: 18,
+    title: "Virtual Reality Concerts: The Future of Live Music Experiences",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=750&h=375&fit=crop",
+    author: "Temi Adeyemi",
+    date: "April 14, 2026",
+    excerpt: "VR concert platforms are giving fans worldwide access to live performances like never before.",
+    shareCount: 1320,
+    commentCount: 18,
+  },
+  {
+    id: 19,
+    title: "Afropop Legends: The Icons Who Shaped African Music for Generations",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=750&h=375&fit=crop",
+    author: "Kofi Mensah",
+    date: "April 13, 2026",
+    excerpt: "From Fela Kuti to Miriam Makeba, we celebrate the visionaries who laid the foundation for today's global sound.",
+    shareCount: 3100,
+    commentCount: 44,
+  },
+  {
+    id: 20,
+    title: "TikTok's Role in Breaking New African Artists to a Global Audience",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=750&h=375&fit=crop",
+    author: "Zainab Yusuf",
+    date: "April 12, 2026",
+    excerpt: "How a 60-second video on TikTok is becoming the new radio — and why African artists are winning the algorithm.",
+    shareCount: 2890,
+    commentCount: 36,
+  },
+  {
+    id: 21,
+    title: "Top 5 African Fashion Designers Making Waves at Global Shows",
+    category: "Lifestyle",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=750&h=375&fit=crop",
+    author: "Chioma Eze",
+    date: "April 11, 2026",
+    excerpt: "African fashion is having a global moment, with designers from Lagos to Nairobi headlining international runways.",
+    shareCount: 1780,
+    commentCount: 21,
+  },
+  {
+    id: 22,
+    title: "Music NFTs: Are African Artists Cashing In on the Digital Revolution?",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=750&h=375&fit=crop",
+    author: "David Okafor",
+    date: "April 10, 2026",
+    excerpt: "A new wave of African musicians is exploring NFTs as a way to monetize their art and connect directly with fans.",
+    shareCount: 980,
+    commentCount: 15,
+  },
+  {
+    id: 23,
+    title: "Health & Wellness: How Music Therapy Is Transforming Mental Health in Africa",
+    category: "Health",
+    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=750&h=375&fit=crop",
+    author: "Marcus Williams",
+    date: "April 9, 2026",
+    excerpt: "Clinics across the continent are turning to music as a powerful tool in addressing the mental health crisis.",
+    shareCount: 1560,
+    commentCount: 28,
+  },
+  {
+    id: 24,
+    title: "Best Wireless Headphones for Music Lovers in 2026",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=750&h=375&fit=crop",
+    author: "Temi Adeyemi",
+    date: "April 8, 2026",
+    excerpt: "We tested over 20 pairs of headphones to find the best options for audiophiles on every budget.",
+    shareCount: 2100,
+    commentCount: 31,
+  },
+  {
+    id: 25,
+    title: "Afro Nation Portugal 2026: Everything You Need to Know",
+    category: "Entertainment",
+    image: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=750&h=375&fit=crop",
+    author: "Lesego Dlamini",
+    date: "April 7, 2026",
+    excerpt: "The world's biggest Afrobeats festival returns with its most impressive lineup yet. Here's your survival guide.",
+    shareCount: 3700,
+    commentCount: 55,
+  },
+  {
+    id: 26,
+    title: "Interview: Tems on Breaking Barriers and Staying True to Her Sound",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=750&h=375&fit=crop",
+    author: "Amara Osei",
+    date: "April 6, 2026",
+    excerpt: "In an exclusive sit-down, the Lagos-born superstar opens up about her journey, influences, and what's next.",
+    shareCount: 4900,
+    commentCount: 72,
+  },
+  {
+    id: 27,
+    title: "The Most Streamed Nigerian Songs of All Time — Updated 2026",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=750&h=375&fit=crop",
+    author: "Kofi Mensah",
+    date: "April 5, 2026",
+    excerpt: "We count down the biggest Nigerian songs in streaming history, from Afrobeats classics to viral global hits.",
+    shareCount: 5600,
+    commentCount: 84,
+  },
+  {
+    id: 28,
+    title: "Sports & Music: How Athletes Are Launching Successful Music Careers",
+    category: "Sports",
+    image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=750&h=375&fit=crop",
+    author: "Marcus Williams",
+    date: "April 4, 2026",
+    excerpt: "From Premier League stars to NBA players, the crossover between sports and music has never been stronger.",
+    shareCount: 1890,
+    commentCount: 26,
+  },
+  {
+    id: 29,
+    title: "Streaming vs Owning: What's Better for True Music Fans in 2026?",
+    category: "Tech",
+    image: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=750&h=375&fit=crop",
+    author: "David Okafor",
+    date: "April 3, 2026",
+    excerpt: "The vinyl revival meets the streaming age — we explore what it means to truly 'own' music in the digital era.",
+    shareCount: 1450,
+    commentCount: 19,
+  },
+  {
+    id: 30,
+    title: "The Biggest Music Collaborations Dropping This Summer",
+    category: "Music",
+    image: "https://images.unsplash.com/photo-1598387993441-a364f854cfff?w=750&h=375&fit=crop",
+    author: "Zainab Yusuf",
+    date: "April 2, 2026",
+    excerpt: "From surprise drops to long-awaited team-ups, these are the collaborations fans have been waiting for.",
+    shareCount: 3200,
+    commentCount: 47,
+  },
+  {
+    id: 31,
+    title: "Record Labels vs Independent Artists: Who Wins in 2026?",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=750&h=375&fit=crop",
+    author: "Chioma Eze",
+    date: "April 1, 2026",
+    excerpt: "The music business landscape is shifting fast. We break down the pros and cons of going indie vs signing a deal.",
+    shareCount: 2340,
+    commentCount: 38,
+  },
+  {
+    id: 32,
+    title: "Behind the Scenes: Making an Afrobeats Music Video in Lagos",
+    category: "Entertainment",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=750&h=375&fit=crop",
+    author: "Lesego Dlamini",
+    date: "March 31, 2026",
+    excerpt: "We go behind the camera on the set of one of the most-watched music videos of the year.",
+    shareCount: 2780,
+    commentCount: 35,
+  },
+  {
+    id: 33,
+    title: "Music Education: Why Learning an Instrument Changes Your Brain",
+    category: "Health",
+    image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=750&h=375&fit=crop",
+    author: "Marcus Williams",
+    date: "March 30, 2026",
+    excerpt: "Science confirms what musicians have always known — playing music is one of the best things you can do for your mind.",
+    shareCount: 1920,
+    commentCount: 29,
+  },
+  {
+    id: 34,
+    title: "VibezFlow's Most-Read Stories of April 2026",
+    category: "News",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=750&h=375&fit=crop",
+    author: "VibezFlow Editors",
+    date: "April 30, 2026",
+    excerpt: "Catch up on the biggest stories our readers couldn't stop talking about this month.",
+    shareCount: 890,
+    commentCount: 7,
+  },
+];
+
+export const breakingNews = [
+  { id: 1, title: "Burna Boy Announces 40-City World Tour Starting in Lagos" },
+  { id: 2, title: "Grammy Awards 2026: African Artists Sweep Major Categories in Historic Night" },
+  { id: 3, title: "Wizkid's New Album Breaks African Streaming Records in 24 Hours" },
+  { id: 4, title: "New Lagos-Based Streaming Platform Challenges Spotify With Exclusive African Content" },
+  { id: 5, title: "Afro Nation Portugal 2026 Reveals Most Impressive Lineup Yet" },
+];
+
+export const categories = [
+  "All",
+  "Music",
+  "Tech",
+  "Entertainment",
+  "News",
+];
+
+export const techCategories = [
+  "All",
+  "Apps",
+  "Streaming",
+  "Gadgets",
+  "Startup",
+];
+
+export const lifestyleCategories = [
+  "All",
+  "Fashion",
+  "Health",
+  "Travel",
+  "Food",
+];
+
+export const featuredArticles: Article[] = articles
+  .filter(a => a.shareCount && a.shareCount > 3000)
+  .slice(0, 3);
+
+export const trendingPosts = articles
+  .filter(a => a.shareCount)
+  .sort((a, b) => (b.shareCount || 0) - (a.shareCount || 0))
+  .slice(0, 5);
+</file>
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+:root {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --red-accent: #dc2626;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-red-accent: var(--red-accent);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Line clamps */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1f2937;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--red-accent);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Card shadow */
+.card-shadow {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.card-shadow:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Max-width content container */
+.content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img[src=""] {
+  opacity: 0;
+}
+</file>
+
+<file path="src/app/layout.tsx">
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "VibezFlow - Music, Entertainment & News",
+  description: "Your #1 source for the latest in African music, entertainment, tech, and lifestyle news.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className="bg-[#f5f5f5]">
+        {children}
+      </body>
+    </html>
+  );
+}
+</file>
+
+<file path="src/app/page.tsx">
+import Header from "@/components/Header";
+import NewsTicker from "@/components/NewsTicker";
+import Hero from "@/components/Hero";
+import FeaturedStories from "@/components/FeaturedStories";
+import CategorySection from "@/components/CategorySection";
+import Sidebar from "@/components/Sidebar";
+import Newsletter from "@/components/Newsletter";
+import Footer from "@/components/Footer";
+import EntertainmentSection from "@/components/EntertainmentSection";
+import LatestPosts from "@/components/LatestPosts";
+
+function AdBanner({ size = "728x90" }: { size?: string }) {
+  return (
+    <div className="bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-sm font-medium w-full py-5">
+      {size} — Advertisement
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-[#f5f5f5]">
+      <Header />
+      <NewsTicker />
+
+      {/* Hero + Sidebar share the same grid row — matching JNews exactly */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="content-container px-4 py-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4 items-start">
+            <Hero />
+            <div className="hidden lg:block">
+              <Sidebar />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main className="content-container px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
+
+          {/* Main Content */}
+          <div className="space-y-6 min-w-0">
+            <FeaturedStories />
+            <AdBanner size="728x90" />
+            <CategorySection title="Business" />
+            <AdBanner size="728x90" />
+            <CategorySection title="Tech" />
+            <EntertainmentSection />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CategorySection title="Lifestyle" />
+              <CategorySection title="Music" />
+            </div>
+            <AdBanner size="970x90" />
+            <LatestPosts />
+          </div>
+
+          {/* Sticky Sidebar continues below hero */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-4 space-y-5 max-h-[calc(100vh-2rem)] overflow-y-auto pb-4">
+              <Sidebar />
+            </div>
+          </aside>
+
+        </div>
+      </main>
+
+      <Newsletter />
+      <Footer />
+    </div>
+  );
+}
+</file>
+
+<file path="src/components/CategorySection.tsx">
+"use client";
+
+import { useState } from "react";
+import { articles } from "@/data/articles";
+import ArticleCard from "./ArticleCard";
+
+type SectionConfig = {
+  tabs: string[];
+  filter: string[];
+};
+
+const configs: Record<string, SectionConfig> = {
+  Business: {
+    tabs: ["All", "Business", "Startup", "Finance", "World"],
+    filter: ["Business", "Startup", "Finance", "World", "Politics"],
+  },
+  Tech: {
+    tabs: ["All", "Apps", "Gadgets", "Streaming", "Startup"],
+    filter: ["Tech", "Gaming", "Apps", "Mobile", "Streaming"],
+  },
+  Lifestyle: {
+    tabs: ["All", "Fashion", "Food", "Health", "Travel"],
+    filter: ["Lifestyle", "Fashion", "Food", "Health", "Travel"],
+  },
+  Music: {
+    tabs: ["All", "Afrobeats", "Amapiano", "Hiphop", "Pop"],
+    filter: ["Music"],
+  },
+};
+
+export default function CategorySection({ title }: { title: string }) {
+  const [activeTab, setActiveTab] = useState("All");
+  const config = configs[title] || { tabs: ["All"], filter: [] };
+
+  const filtered = articles
+    .filter(a => config.filter.length === 0 || config.filter.includes(a.category))
+    .slice(0, 3);
+
+  return (
+    <section className="bg-white p-5">
+      <div className="flex items-center justify-between pb-2 mb-4 border-b-2 border-red-600">
+        <h2 className="text-sm font-bold text-gray-800 uppercase tracking-wide">{title}</h2>
+        <ul className="hidden sm:flex items-center">
+          {config.tabs.map((tab) => (
+            <li key={tab}>
+              <button
+                onClick={() => setActiveTab(tab)}
+                className={`px-3 py-1 text-[11px] font-semibold transition-colors ${
+                  activeTab === tab
+                    ? "text-white bg-red-600"
+                    : "text-gray-500 hover:text-red-600 hover:bg-gray-50"
+                }`}
+              >
+                {tab}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        {filtered.map((article) => (
+          <ArticleCard key={article.id} article={article} size="medium" />
+        ))}
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/FeaturedStories.tsx">
+import { articles } from "@/data/articles";
+
+export default function FeaturedStories() {
+  const featured = articles.filter(a => a.shareCount && a.shareCount > 3000).slice(0, 4);
+  const [mainArticle, ...smallArticles] = featured;
+  if (!mainArticle) return null;
+
+  return (
+    <section className="bg-white p-5">
+      {/* Section title matching JNews — "Featured" black + "Stories" red inline */}
+      <h2 className="text-sm font-bold text-gray-800 pb-2 mb-4 border-b border-gray-200 uppercase tracking-wide">
+        <span className="text-gray-800">Featured</span>
+        <span className="text-red-600">Stories</span>
+      </h2>
+
+      {/* Large featured article — image left, text right */}
+      <div className="grid grid-cols-[180px_1fr] gap-4 mb-5 pb-5 border-b border-gray-100">
+        <div className="relative h-[130px] overflow-hidden group cursor-pointer flex-shrink-0">
+          <img
+            src={mainArticle.image}
+            alt={mainArticle.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute top-2 left-2">
+            <span className="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 uppercase">
+              {mainArticle.category}
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between py-0.5">
+          <div>
+            <h3 className="text-base font-bold text-gray-800 hover:text-red-600 transition-colors cursor-pointer leading-snug mb-2 line-clamp-2">
+              {mainArticle.title}
+            </h3>
+            <div className="flex items-center text-xs text-gray-500 gap-2 mb-2">
+              <span>
+                by{" "}
+                <a href="#" className="text-red-600 font-semibold hover:underline">
+                  {mainArticle.author}
+                </a>
+              </span>
+              <span className="text-gray-300">·</span>
+              <span>{mainArticle.date}</span>
+              {mainArticle.commentCount && (
+                <>
+                  <span className="text-gray-300">·</span>
+                  <span className="flex items-center gap-0.5">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z" clipRule="evenodd"/>
+                    </svg>
+                    {mainArticle.commentCount}
+                  </span>
+                </>
+              )}
+            </div>
+            {mainArticle.excerpt && (
+              <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 mb-3">
+                {mainArticle.excerpt}
+              </p>
+            )}
+          </div>
+          <div>
+            <a href="#" className="inline-block border border-gray-300 hover:border-red-600 hover:text-red-600 text-gray-600 text-[10px] font-bold px-3 py-1.5 transition-colors uppercase tracking-wide">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 3 small cards below */}
+      <div className="grid grid-cols-3 gap-4">
+        {smallArticles.slice(0, 3).map((article) => (
+          <article key={article.id} className="group cursor-pointer">
+            <div className="relative h-[120px] overflow-hidden mb-2">
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute top-2 left-2">
+                <span className="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 uppercase">
+                  {article.category}
+                </span>
+              </div>
+            </div>
+            <h4 className="text-xs font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug line-clamp-2 mb-1">
+              {article.title}
+            </h4>
+            <p className="text-[10px] text-gray-400">{article.date}</p>
+          </article>
+        ))}
+      </div>
+
+      {/* Load More */}
+      <div className="text-center mt-5">
+        <button className="border border-gray-300 hover:border-red-600 hover:text-red-600 text-gray-600 text-xs font-bold px-8 py-2 transition-colors uppercase tracking-wide">
+          Load More
+        </button>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Header.tsx">
+"use client";
+
+import { useState } from "react";
+
+const navItems = [
+  { label: "Home", href: "/", active: true, hasDropdown: false },
+  { label: "Music", href: "#", active: false, hasDropdown: true },
+  { label: "Entertainment", href: "#", active: false, hasDropdown: true },
+  { label: "Tech", href: "#", active: false, hasDropdown: true },
+  { label: "Business", href: "#", active: false, hasDropdown: false },
+  { label: "Lifestyle", href: "#", active: false, hasDropdown: true },
+  { label: "Video", href: "#", active: false, hasDropdown: false },
+];
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  return (
+    <>
+      {/* TOP BAR */}
+      <div className="bg-black text-white text-xs py-1.5">
+        <div className="content-container px-4 flex justify-between items-center">
+          <div className="hidden sm:flex items-center">
+            {["About", "Advertise", "Privacy & Policy", "Contact Us"].map((item, i, arr) => (
+              <span key={item} className="flex items-center">
+                <a href="#" className="hover:text-gray-300 transition-colors px-2 py-0.5">{item}</a>
+                {i < arr.length - 1 && <span className="text-gray-600">|</span>}
+              </span>
+            ))}
+          </div>
+          <div className="flex items-center gap-3 ml-auto">
+            <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition-colors">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5L14.17.5C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter" className="hover:text-gray-300 transition-colors">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" className="hover:text-gray-300 transition-colors">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s0,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58,0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.18,15.58,2.16,15.2,2.16,12s0-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.35.2-6.78,2.62-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.36,2.62,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.35-.2,6.78-2.62,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.35-2.62-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" className="hover:text-gray-300 transition-colors">
+              <svg className="w-3.5 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5,6.19a3.02,3.02,0,0,0-2.12-2.14C19.54,3.5,12,3.5,12,3.5s-7.54,0-9.38.55A3.02,3.02,0,0,0,.5,6.19,31.56,31.56,0,0,0,0,12a31.56,31.56,0,0,0,.5,5.81,3.02,3.02,0,0,0,2.12,2.14c1.84.55,9.38.55,9.38.55s7.54,0,9.38-.55a3.02,3.02,0,0,0,2.12-2.14A31.56,31.56,0,0,0,24,12,31.56,31.56,0,0,0,23.5,6.19ZM9.55,15.57V8.43L15.82,12Z"/></svg>
+            </a>
+            <a href="#" aria-label="RSS" className="hover:text-gray-300 transition-colors">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M6.18,15.64a2.18,2.18,0,1,1-2.18,2.18A2.18,2.18,0,0,1,6.18,15.64M4,4.44A15.56,15.56,0,0,1,19.56,20h-2.83A12.73,12.73,0,0,0,4,7.27V4.44m0,5.66a9.9,9.9,0,0,1,9.9,9.9H11.07A7.07,7.07,0,0,0,4,13.17V10.1Z"/></svg>
+            </a>
+            <span className="text-gray-600">|</span>
+            <a href="#" className="flex items-center gap-1 hover:text-gray-300 transition-colors">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18,8H17V6A5,5,0,0,0,7,6V8H6a2,2,0,0,0-2,2v10a2,2,0,0,0,2,2H18a2,2,0,0,0,2-2V10A2,2,0,0,0,18,8ZM12,17a2,2,0,1,1,2-2A2,2,0,0,1,12,17Zm3.1-9H8.9V6a3.1,3.1,0,0,1,6.2,0Z"/></svg>
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* LOGO + AD BANNER */}
+      <header className="bg-white">
+        <div className="content-container px-4 py-4">
+          <div className="flex items-center justify-between gap-6">
+            <a href="/" className="flex-shrink-0 flex items-baseline group">
+              <span className="text-[2.6rem] font-black text-red-600 leading-none tracking-tight group-hover:text-red-700 transition-colors">Vibez</span>
+              <span className="text-[2.6rem] font-black text-gray-900 leading-none tracking-tight">Flow</span>
+              <span className="hidden sm:block text-[10px] text-gray-400 ml-2 self-center leading-none">
+                music · news · entertainment
+              </span>
+            </a>
+            <div className="hidden lg:flex items-center justify-center flex-1 max-w-[730px] h-[90px] border border-gray-200 bg-gray-50 text-gray-400 text-sm font-medium gap-3 flex-shrink-0">
+              <span>728×90 &nbsp; Smart &amp; Responsive &nbsp; ADVERTISEMENT</span>
+              <button className="border border-gray-400 text-gray-500 text-xs px-4 py-1.5 font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors">
+                LEARN MORE
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* NAV ROW — HOME uses red text + red underline like JNews, not red background */}
+        <nav className="border-t border-b border-gray-200">
+          <div className="content-container px-4">
+            <div className="flex items-center justify-between">
+              <ul className="hidden md:flex items-center">
+                {navItems.map(({ label, href, active, hasDropdown }) => (
+                  <li key={label} className="relative group">
+                    <a
+                      href={href}
+                      className={`flex items-center gap-0.5 px-4 py-3 text-sm font-bold transition-colors whitespace-nowrap border-b-2 ${
+                        active
+                          ? "text-red-600 border-red-600"
+                          : "text-gray-700 border-transparent hover:text-red-600"
+                      }`}
+                    >
+                      {label}
+                      {hasDropdown && (
+                        <svg className={`w-3 h-3 ${active ? "text-red-500" : "text-gray-400 group-hover:text-red-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex items-center ml-auto">
+                <button
+                  onClick={() => setSearchOpen(!searchOpen)}
+                  className="p-3 text-gray-500 hover:text-red-600 transition-colors"
+                  aria-label="Search"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="md:hidden p-3 text-gray-500 hover:text-red-600 transition-colors"
+                  aria-label="Menu"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {searchOpen && (
+              <div className="border-t border-gray-100 py-3">
+                <div className="flex max-w-lg">
+                  <input
+                    type="text"
+                    placeholder="Type and hit enter..."
+                    autoFocus
+                    className="flex-1 px-4 py-2 border border-gray-300 border-r-0 text-sm focus:outline-none focus:border-red-500"
+                  />
+                  <button className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 text-sm font-semibold transition-colors">
+                    Search
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </nav>
+      </header>
+
+      {/* MOBILE MENU */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+          <div className="px-4 py-3 border-b border-gray-100 flex justify-between items-center">
+            <a href="/" className="flex items-baseline">
+              <span className="text-2xl font-black text-red-600">Vibez</span>
+              <span className="text-2xl font-black text-gray-900">Flow</span>
+            </a>
+            <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-red-600">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div className="px-4 py-3 border-b border-gray-100">
+            <div className="flex">
+              <input type="text" placeholder="Search VibezFlow..." className="flex-1 px-4 py-2 border border-gray-300 border-r-0 text-sm focus:outline-none focus:border-red-500" />
+              <button className="bg-red-600 text-white px-4 py-2 text-sm font-semibold">Go</button>
+            </div>
+          </div>
+          <ul>
+            {navItems.map(({ label, href, active }) => (
+              <li key={label} className="border-b border-gray-100">
+                <a href={href} className={`flex items-center justify-between px-5 py-4 text-sm font-semibold transition-colors ${active ? "text-red-600" : "text-gray-700 hover:text-red-600"}`}>
+                  {label}
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="px-5 py-4 border-t border-gray-100 flex flex-wrap gap-4 text-sm text-gray-500">
+            {["About", "Advertise", "Privacy & Policy", "Contact Us"].map((item) => (
+              <a key={item} href="#" className="hover:text-red-600 transition-colors">{item}</a>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+</file>
+
+<file path="src/components/Hero.tsx">
+"use client";
+
+import { useState } from "react";
+import { articles } from "@/data/articles";
+
+export default function Hero() {
+  const heroArticles = articles.slice(0, 8);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const heroArticle = heroArticles[activeIndex];
+
+  return (
+    <div>
+      {/* Main image */}
+      <div className="relative h-[380px] overflow-hidden group cursor-pointer">
+        <img
+          key={activeIndex}
+          src={heroArticle.image}
+          alt={heroArticle.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+        {/* Category badge */}
+        <div className="absolute top-4 left-4">
+          <span className="bg-red-600 text-white text-xs font-bold px-2.5 py-1 uppercase tracking-wide">
+            {heroArticle.category}
+          </span>
+        </div>
+
+        {/* Prev arrow */}
+        <button
+          onClick={() => setActiveIndex((p) => (p - 1 + heroArticles.length) % heroArticles.length)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-8 h-8 flex items-center justify-center text-xl transition-colors"
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+
+        {/* Next arrow */}
+        <button
+          onClick={() => setActiveIndex((p) => (p + 1) % heroArticles.length)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-700 text-white w-8 h-8 flex items-center justify-center text-xl transition-colors"
+          aria-label="Next"
+        >
+          ›
+        </button>
+
+        {/* Title overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h1 className="text-xl lg:text-2xl font-bold text-white leading-snug mb-2 group-hover:text-red-300 transition-colors">
+            {heroArticle.title}
+          </h1>
+          <div className="flex items-center text-xs text-gray-300 gap-2 uppercase tracking-wide">
+            <span>By {heroArticle.author}</span>
+            <span className="text-gray-500">·</span>
+            <span>{heroArticle.date}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Thumbnail strip */}
+      <div className="flex gap-1.5 mt-1.5 overflow-x-auto">
+        {heroArticles.map((article, idx) => (
+          <button
+            key={article.id}
+            onClick={() => setActiveIndex(idx)}
+            className={`relative flex-shrink-0 w-[76px] h-[52px] overflow-hidden transition-all ${
+              idx === activeIndex ? "ring-2 ring-red-600" : "opacity-60 hover:opacity-100"
+            }`}
+            aria-label={article.title}
+          >
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/components/LatestPosts.tsx">
+import { articles } from "@/data/articles";
+
+export default function LatestPosts() {
+  const latestArticles = articles.slice(0, 8);
+
+  return (
+    <section className="bg-white p-5">
+      <h2 className="text-sm font-bold text-gray-800 pb-2 mb-4 border-b-2 border-red-600 uppercase tracking-wide">
+        Latest Post
+      </h2>
+
+      <div className="space-y-5">
+        {latestArticles.map((article) => (
+          <article key={article.id} className="group cursor-pointer grid grid-cols-[180px_1fr] gap-4 pb-5 border-b border-gray-100 last:border-0 last:pb-0">
+            <div className="relative h-[120px] overflow-hidden flex-shrink-0">
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute top-2 left-2">
+                <span className="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 uppercase">
+                  {article.category}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <h3 className="text-sm font-bold text-gray-800 group-hover:text-red-600 transition-colors leading-snug mb-1.5 line-clamp-2">
+                {article.title}
+              </h3>
+              <div className="flex items-center text-xs text-gray-500 gap-2 mb-2 flex-wrap">
+                <span>
+                  by{" "}
+                  <a href="#" className="text-red-600 font-semibold hover:underline">
+                    {article.author}
+                  </a>
+                </span>
+                <span className="text-gray-300">·</span>
+                <span>{article.date}</span>
+                {article.commentCount && (
+                  <>
+                    <span className="text-gray-300">·</span>
+                    <span className="flex items-center gap-0.5">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z" clipRule="evenodd"/>
+                      </svg>
+                      {article.commentCount}
+                    </span>
+                  </>
+                )}
+              </div>
+              {article.excerpt && (
+                <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 mb-2">
+                  {article.excerpt}
+                </p>
+              )}
+              <div>
+                <a href="#" className="inline-block border border-gray-300 hover:border-red-600 hover:text-red-600 text-gray-600 text-[10px] font-bold px-3 py-1.5 transition-colors uppercase tracking-wide">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="flex items-center justify-center gap-1 mt-6">
+        <button className="w-8 h-8 bg-red-600 text-white text-xs font-bold flex items-center justify-center">1</button>
+        <button className="w-8 h-8 border border-gray-300 text-gray-600 text-xs hover:border-red-600 hover:text-red-600 transition-colors flex items-center justify-center">2</button>
+        <span className="px-1 text-gray-400 text-xs">...</span>
+        <button className="w-8 h-8 border border-gray-300 text-gray-600 text-xs hover:border-red-600 hover:text-red-600 transition-colors flex items-center justify-center">24</button>
+        <button className="w-8 h-8 border border-gray-300 text-gray-600 text-xs hover:border-red-600 hover:text-red-600 transition-colors flex items-center justify-center">›</button>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Sidebar.tsx">
+"use client";
+
+import { useState } from "react";
+import { trendingPosts, articles } from "@/data/articles";
+
+export default function Sidebar() {
+  const [activeTab, setActiveTab] = useState<"trending" | "comments" | "latest">("trending");
+
+  const tabArticles = {
+    trending: trendingPosts.slice(0, 3),
+    comments: [...articles].sort((a, b) => (b.commentCount || 0) - (a.commentCount || 0)).slice(0, 3),
+    latest: articles.slice(0, 3),
+  };
+
+  const displayed = tabArticles[activeTab];
+
+  return (
+    <div className="space-y-5">
+
+      {/* Trending / Comments / Latest */}
+      <div className="bg-white">
+        <div className="flex border-b border-gray-200">
+          {(["trending", "comments", "latest"] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 py-2.5 text-xs font-bold capitalize transition-colors ${
+                activeTab === tab
+                  ? "text-red-600 border-b-2 border-red-600 -mb-px"
+                  : "text-gray-500 hover:text-red-600"
+              }`}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
+        </div>
+        <div className="py-3 space-y-3">
+          {displayed.map((post) => (
+            <div key={post.id} className="flex gap-3 group cursor-pointer px-3">
+              <div className="relative w-[68px] h-[50px] flex-shrink-0 overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h4 className="text-xs font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug line-clamp-2 mb-0.5">
+                  {post.title}
+                </h4>
+                <span className="text-[10px] text-gray-400">{post.date}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Popular Stories */}
+      <div className="bg-white p-4">
+        <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wide pb-2 mb-3 border-b-2 border-red-600">
+          Popular Stories
+        </h3>
+
+        {/* Top story with image */}
+        {trendingPosts[0] && (
+          <div className="group cursor-pointer mb-3">
+            <div className="relative h-[140px] overflow-hidden mb-2">
+              <img
+                src={trendingPosts[0].image}
+                alt={trendingPosts[0].title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <h4 className="text-xs font-bold text-red-600 hover:text-red-700 leading-snug line-clamp-2 mb-1">
+              {trendingPosts[0].title}
+            </h4>
+            <div className="flex items-center gap-2 text-[10px] text-gray-400">
+              <span>{trendingPosts[0].shareCount?.toLocaleString()} shares</span>
+              <span>·</span>
+              <a href="#" className="hover:text-red-600">Share</a>
+            </div>
+          </div>
+        )}
+
+        {/* Numbered list */}
+        <div className="space-y-2.5">
+          {trendingPosts.slice(1, 6).map((post, idx) => (
+            <div key={post.id} className="flex gap-2 group cursor-pointer pb-2.5 border-b border-gray-100 last:border-0 last:pb-0">
+              <span className="text-2xl font-black text-gray-100 leading-none w-6 flex-shrink-0">{String(idx + 2).padStart(2, "0")}</span>
+              <div className="flex-1 min-w-0">
+                <h4 className="text-xs font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug line-clamp-2 mb-1">
+                  {post.title}
+                </h4>
+                <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                  <span>{post.shareCount?.toLocaleString()} shares</span>
+                  <span>·</span>
+                  <a href="#" className="hover:text-red-600">Share</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 300x600 Ad */}
+      <div className="bg-gray-50 border border-gray-200 flex flex-col items-center justify-center py-10 text-center">
+        <span className="text-[10px] text-gray-400 uppercase tracking-widest">Smart &amp; Responsive</span>
+        <span className="text-xs font-bold text-gray-400 mt-1">ADVERTISEMENT</span>
+        <span className="text-[10px] text-gray-300 mt-1">300×600</span>
+        <button className="mt-3 border border-gray-300 text-gray-500 text-[10px] px-4 py-1.5 font-bold uppercase tracking-wide hover:bg-gray-100 transition-colors">
+          LEARN MORE
+        </button>
+      </div>
+
+      {/* Stay Connected */}
+      <div className="bg-gray-900 text-white p-4">
+        <h3 className="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-gray-700">
+          Stay Connected
+        </h3>
+        <div className="grid grid-cols-3 gap-1.5">
+          {[
+            { label: "Facebook", count: "12.4k", color: "bg-blue-600" },
+            { label: "Twitter/X", count: "8.1k", color: "bg-black" },
+            { label: "Instagram", count: "31.5k", color: "bg-pink-600" },
+            { label: "YouTube", count: "140.6k", color: "bg-red-600" },
+            { label: "Behance", count: "137", color: "bg-blue-500" },
+            { label: "Flickr", count: "640", color: "bg-pink-500" },
+          ].map(({ label, count, color }) => (
+            <a key={label} href="#" className={`${color} p-2 flex flex-col items-center hover:opacity-90 transition-opacity`}>
+              <span className="text-sm font-black leading-tight">{count}</span>
+              <span className="text-[9px] text-white/70 text-center leading-tight mt-0.5">{label}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Get Daily Updates */}
+      <div className="bg-red-600 text-white p-4">
+        <h3 className="text-sm font-bold mb-1">Get Daily Updates</h3>
+        <p className="text-xs text-red-200 mb-3">Subscribe and never miss a beat.</p>
+        <input
+          type="email"
+          placeholder="Your email address"
+          className="w-full px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none mb-2"
+        />
+        <button className="w-full bg-black hover:bg-gray-900 text-white py-2 text-xs font-bold uppercase tracking-wide transition-colors">
+          Subscribe
+        </button>
+      </div>
+
+      {/* 300x250 Ad */}
+      <div className="bg-gray-50 border border-gray-200 flex flex-col items-center justify-center py-8 text-center">
+        <span className="text-[10px] text-gray-400 uppercase tracking-widest">Smart &amp; Responsive</span>
+        <span className="text-xs font-bold text-gray-400 mt-1">ADVERTISEMENT</span>
+        <span className="text-[10px] text-gray-300 mt-1">300×250</span>
+        <button className="mt-3 border border-gray-300 text-gray-500 text-[10px] px-4 py-1.5 font-bold uppercase tracking-wide hover:bg-gray-100 transition-colors">
+          LEARN MORE
+        </button>
+      </div>
+
+    </div>
+  );
+}
+</file>
+
+</files>
